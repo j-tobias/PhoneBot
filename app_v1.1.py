@@ -4,7 +4,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import asyncio
 from utils import computeMetrics, loadBasicDF, getReport
-from vapi import updateSystemMessage, getAssistants
+from utils.vapi import updateSystemMessage, getAssistants
 
 
 def loadconfig()-> list:
