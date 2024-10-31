@@ -1,17 +1,16 @@
 import requests
 import json
+import os
 
+VAPI_PRIVATE = os.getenv("VAPI_PRIVATE")
+ID = "82b64b97-8e14-436c-88fe-c8581c8a2591"
 
-def getkey (name:str="VAPI PRIVATE")-> str:
-    with open("APIKEY.json", "r") as f:
-        keys = json.load(f)
-    return keys[name]
 
 def getAssistants():
     url = "https://api.vapi.ai/assistant"
     
     headers = {
-        "Authorization": f"Bearer {getkey()}"
+        "Authorization": f"Bearer {VAPI_PRIVATE}"
     }
     
     response = requests.get(url, headers=headers)
@@ -28,7 +27,7 @@ def updateAssistant(assistant_id: str, update_data: dict) -> dict:
     url = f"https://api.vapi.ai/assistant/{assistant_id}"
     
     headers = {
-        "Authorization": f"Bearer {getkey()}",
+        "Authorization": f"Bearer {VAPI_PRIVATE}",
         "Content-Type": "application/json"
     }
     
@@ -64,5 +63,5 @@ def updateSystemMessage(id:str, systemmessage:str)->dict:
 
 
 
-ID = "82b64b97-8e14-436c-88fe-c8581c8a2591"
+
 
