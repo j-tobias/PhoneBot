@@ -1,0 +1,118 @@
+[
+    {
+        "id": "82b64b97-8e14-436c-88fe-c8581c8a2591",
+        "orgId": "eff4995c-af16-448b-8cd5-68c17d24cd19",
+        "name": "Eva",
+        "voice": {
+            "voiceId": "248be419-c632-4f23-adf1-5324ed7dbf1d",
+            "provider": "cartesia",
+            "fillerInjectionEnabled": false
+        },
+        "createdAt": "2024-09-15T19:01:58.088Z",
+        "updatedAt": "2024-10-31T01:27:11.695Z",
+        "model": {
+            "model": "gpt-4o-mini",
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "Das Aktuelle Datum und Uhrzeit ist : {{now}}\nBitte antworte Immer in Gedichten und Metaphern"
+                }
+            ],
+            "provider": "openai"
+        },
+        "recordingEnabled": true,
+        "firstMessage": "Hello, this is Ava. How may I assist you today?",
+        "voicemailMessage": "Hey, this is Ava. Could you please call me back when you're free?",
+        "endCallMessage": "Thank you for contacting us. Have a great day!",
+        "transcriber": {
+            "model": "general",
+            "language": "en",
+            "provider": "deepgram"
+        },
+        "clientMessages": [
+            "conversation-update",
+            "function-call"
+        ],
+        "serverMessages": [
+            "hang",
+            "model-output"
+        ],
+        "endCallPhrases": [
+            "goodbye"
+        ],
+        "backchannelingEnabled": false,
+        "backgroundDenoisingEnabled": false,
+        "isServerUrlSecretSet": false
+    },
+    {
+        "id": "62447903-271e-4ddb-a89c-2b5636d829ac",
+        "orgId": "eff4995c-af16-448b-8cd5-68c17d24cd19",
+        "name": "Leo",
+        "voice": {
+            "voiceId": "384b625b-da5d-49e8-a76d-a2855d4f31eb",
+            "provider": "cartesia",
+            "inputMinCharacters": 5,
+            "fillerInjectionEnabled": false
+        },
+        "createdAt": "2024-09-09T23:15:06.596Z",
+        "updatedAt": "2024-10-31T00:47:26.461Z",
+        "model": {
+            "model": "claude-3-opus-20240229",
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "Willkommen, Franz! Sie sind die freundliche und hilfsbereite Stimme von Visana, hier um Patienten und deren Angeh\u00f6rigen bei ihren Pflegefragen zu unterst\u00fctzen. Sie helfen dementzkranken dabei allt\u00e4gliche Probleme zu bew\u00e4ltigen, wie z.b. das erstellen einer Einkaufsliste.\n\nWichtige Informationen:\n- jeden Freitag wird f\u00fcr die Patienten eingekauft, dass k\u00f6nnen sie auch gerne sagen um den Patienten Gewissheit zu geben.\n\n\nGenerelles Verhalten\n- Bitte schreibe deine Antworten immer so das sie gelesen werden k\u00f6nnen. Also anstatt von \"2.\" schreibe \"zweitens\" order anstatt von \"5xSahne\" schreibe \"5 mal Sahne\".\n- Bitte spreche User/Patienten/Customers immer Sie order Ihnen an. Es ist wichtig die H\u00f6flichkeit Form zu verwenden, da es sich um ein professionelles Verh\u00e4ltnis handelt \n\n\nDas Aktuelle Datum und Uhrzeit ist : {{now}}"
+                }
+            ],
+            "provider": "anthropic",
+            "temperature": 0.7,
+            "emotionRecognitionEnabled": true
+        },
+        "recordingEnabled": true,
+        "firstMessage": "Hallo, ich bin Franz von Visana. Wie kann ich ihnen helfen?",
+        "voicemailMessage": "Guten Tag. Leider kann ich ihnen gerade nicht helfen. Bitte versuchen sie es noch einmal.",
+        "endCallFunctionEnabled": false,
+        "endCallMessage": "Vielen Dank f\u00fcr Ihren Anruf. Falls Sie noch fragen haben, rufen sie bitte nochmal an. Ich w\u00fcnsche Ihnen eine sch\u00f6nen Tag, auf wiedersehen.",
+        "transcriber": {
+            "model": "nova-2-general",
+            "language": "de",
+            "provider": "deepgram"
+        },
+        "clientMessages": [
+            "transcript",
+            "hang",
+            "function-call",
+            "speech-update",
+            "metadata",
+            "conversation-update"
+        ],
+        "serverMessages": [
+            "end-of-call-report",
+            "status-update",
+            "hang",
+            "function-call"
+        ],
+        "serverUrl": "https://6ac6-109-250-189-192.ngrok-free.app",
+        "endCallPhrases": [
+            "Danke f\u00fcr Ihren Anruf."
+        ],
+        "hipaaEnabled": false,
+        "maxDurationSeconds": 297,
+        "backchannelingEnabled": true,
+        "analysisPlan": {
+            "successEvaluationPrompt": "You are a healthcare worker reviewing an interaction between a patient and an AI Assistant. Please provide a number on the scale of 1 to 10 whether the patient seems to be in a dangerous situation and should be helped professionally by a non AI Healthcare worker.\n\nRelevant:\n- Is the Patient angry or shows negative emotions?\n- Does the Patient seem upset?",
+            "successEvaluationRubric": "NumericScale"
+        },
+        "backgroundDenoisingEnabled": false,
+        "artifactPlan": {
+            "videoRecordingEnabled": false
+        },
+        "messagePlan": {
+            "idleMessageMaxSpokenCount": 1
+        },
+        "startSpeakingPlan": {
+            "smartEndpointingEnabled": true
+        },
+        "isServerUrlSecretSet": false
+    }
+]
