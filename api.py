@@ -6,8 +6,6 @@ import json
 import os
 
 
-
-
 # Set up the app
 app = FastAPI()
 
@@ -20,11 +18,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 # Load the Credentials
 MAILJET_KEY = os.getenv("MAILJET_KEY")
 MAILJET_SECRET = os.getenv("MAILJET_SECRET")
-
 
 
 # ENDPOINT FOR VAPI POSTS
@@ -116,10 +112,24 @@ async def root(request: Request):
         print("Email Send Response: ",result)
 
 
-
+# ENDPOINT FOR CHECKING AVAILABILITY
 @app.get("/ping")
 async def root():
     return {"response": "Hello World"}
+
+
+import gradio as gr
+
+
+with gr.Blocks() as demo:
+
+    gr.Markdown("# PhoneBot 📞")
+
+
+app = gr.mount_gradio_app(app, demo, path="/app")
+
+
+
 
 if __name__ == "__main__":
     import uvicorn
