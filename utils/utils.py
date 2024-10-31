@@ -5,7 +5,7 @@ import os
 
 
 # REPORTSPATH = "C:\Users\Justus Tobias\Desktop\PhoneBotDashboard\Reports"
-REPORTSPATH = "Reports/"
+REPORTSPATH = "Logs/Reports/"
 
 def getReportPaths()-> list:
     return glob.glob(REPORTSPATH+"/*")

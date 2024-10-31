@@ -119,11 +119,40 @@ async def root():
 
 
 import gradio as gr
+from utils.app import loadAssistant, updateSystemMessage
 
 
 with gr.Blocks() as demo:
 
-    gr.Markdown("# PhoneBot 📞")
+    gr.HTML("""
+    <head>
+        <meta charset="UTF-8">
+        <style>h1 {text-align: center;}</style>
+    </head>
+    <body><h1>PhoneBot 📞</h1></body>""")
+
+    with gr.Tab("+49 176 362209833"):
+
+        # TAB VARIABLES
+        ASSISTANT_ID_1 = "82b64b97-8e14-436c-88fe-c8581c8a2591"
+
+        gr.Markdown("## Overview")
+
+        gr.Markdown("### You can use different variables in the SystemMessage to give the Agent extra information")
+        gr.Markdown(" - {{now}} Current date and time (UTC) (Jan 1, 2024 12:00 PM)")
+        gr.Markdown(" - {{date}} Current data (UTC) (Jan 1, 2024)")
+        gr.Markdown(" - {{time}} Current time (UTC) (12:00 PM)")
+        gr.Markdown(" - {{month}} Current month (UTC) (January)")
+        gr.Markdown(" - {{day}} Current day of month (UTC) (1)")
+        gr.Markdown(' - {{"now" | date: "%A, %b %d, %Y, %I:%M %p", "Europe/Berlin"}} For the full Time with Day of the Week (Thursday, Oct 31, 2024, 06:45 PM)')
+
+        SystemMessage = gr.Textbox(value=loadAssistant(ASSISTANT_ID_1), lines=10, placeholder="Please write the System Prompt here", container=False, label=None)
+
+        updatebtn = gr.Button("update")
+
+        response = gr.Textbox(label="Server Response")
+
+        updatebtn.click(updateSystemMessage, inputs=[ASSISTANT_ID_1, SystemMessage], outputs=[response], preprocess=False)
 
 
 app = gr.mount_gradio_app(app, demo, path="/app")
