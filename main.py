@@ -131,7 +131,7 @@ with gr.Blocks() as demo:
     </head>
     <body><h1>PhoneBot 📞</h1></body>""")
 
-    with gr.Tab("+49 176 362209833"):
+    with gr.Tab("+49 (821) 90579038"):
 
         # TAB VARIABLES
         ASSISTANT_ID_1 = "82b64b97-8e14-436c-88fe-c8581c8a2591"
@@ -148,10 +148,16 @@ with gr.Blocks() as demo:
 
         SystemMessage = gr.Textbox(value=loadAssistant(ASSISTANT_ID_1), lines=10, placeholder="Please write the System Prompt here", container=False, label=None)
 
-        updatebtn = gr.Button("update")
+        with gr.Row():
+
+            with gr.Column(scale=7):
+                updatebtn = gr.Button("update")
+            with gr.Column(scale=1):
+                refreshbtn = gr.Button("🔄 refresh")
 
         response = gr.Textbox(label="Server Response")
 
+        refreshbtn.click(lambda: loadAssistant(ASSISTANT_ID_1), outputs=[SystemMessage], preprocess=False)
         updatebtn.click(lambda SysMsg:updateSystemMessage(ASSISTANT_ID_1, SysMsg), inputs=[SystemMessage], outputs=[response], preprocess=False)
 
 
