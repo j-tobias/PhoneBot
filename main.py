@@ -152,7 +152,7 @@ with gr.Blocks() as demo:
 
         response = gr.Textbox(label="Server Response")
 
-        updatebtn.click(updateSystemMessage, inputs=[ASSISTANT_ID_1, SystemMessage], outputs=[response], preprocess=False)
+        updatebtn.click(lambda SysMsg:updateSystemMessage(ASSISTANT_ID_1, SysMsg), inputs=[SystemMessage], outputs=[response], preprocess=False)
 
 
 app = gr.mount_gradio_app(app, demo, path="/app")
